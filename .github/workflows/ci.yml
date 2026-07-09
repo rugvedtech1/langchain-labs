@@ -29,4 +29,6 @@ jobs:
 
       - name: Run tests
         working-directory: 01-ai-chatbot/backend
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: pytest

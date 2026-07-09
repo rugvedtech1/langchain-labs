@@ -7,3 +7,4 @@ FastAPI backend with LangChain + OpenAI integration.
 2. Activate: `source venv/bin/activate`
 3. Install: `pip install -r requirements.txt`
 4. Run: `uvicorn main:app --reload`
+

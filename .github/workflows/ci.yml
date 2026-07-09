@@ -1,0 +1,32 @@
+name: Backend CI - AI Chatbot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '01-ai-chatbot/backend/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - '01-ai-chatbot/backend/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        working-directory: 01-ai-chatbot/backend
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        working-directory: 01-ai-chatbot/backend
+        run: pytest

@@ -5,13 +5,13 @@ on:
     branches: [main]
     paths:
       - '01-ai-chatbot/backend/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [main]
     paths:
       - '01-ai-chatbot/backend/**'
-paths:
-  - '01-ai-chatbot/backend/**'
-  - '.github/workflows/**'
+      - '.github/workflows/**'
+
 jobs:
   test:
     runs-on: ubuntu-latest

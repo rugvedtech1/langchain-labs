@@ -8,3 +8,13 @@ router = APIRouter()
 def chat(request: ChatRequest) -> ChatResponse:
     reply = get_chat_response(request.message, request.session_id)
     return ChatResponse(reply=reply)
+
+from fastapi.responses import StreamingResponse
+from app.services.chat_service import stream_chat_response
+
+@router.post("/chat/stream")
+def chat_stream(request: ChatRequest):
+    return StreamingResponse(
+        stream_chat_response(request.message, request.session_id),
+        media_type="text/event-stream",
+    )

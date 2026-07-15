@@ -20,3 +20,8 @@ def get_chat_response(user_message: str, session_id: str) -> str:
     config = {"configurable": {"session_id": session_id}}
     response = chain_with_history.invoke(user_message, config=config)
     return response.content
+
+def stream_chat_response(user_message: str, session_id: str):
+    config = {"configurable": {"session_id": session_id}}
+    for chunk in chain_with_history.stream(user_message, config=config):
+        yield chunk.content
